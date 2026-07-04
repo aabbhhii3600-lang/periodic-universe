@@ -1,4 +1,5 @@
 import PeriodicTable from '../components/periodic-table/PeriodicTable';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-900 px-4 py-6">

@@ -1,22 +1,33 @@
 'use client';
 
+import { useState } from 'react';
 import { elements, categoryColors, categoryLabels, ElementCategory, Element } from '../../data/elements';
+import ElementDetailPanel from '../element-card/ElementDetailPanel';
 
-// Lanthanides (ypos=8) and actinides (ypos=9) get pushed down
-// one extra row to create a visible gap between main table and f-block
 function getGridRow(ypos: number): number {
   if (ypos <= 7) return ypos;
-  if (ypos === 8) return 9;   // lanthanides — row 8 is left empty as gap
-  return 10;                   // actinides
+  if (ypos === 8) return 9;
+  return 10;
 }
 
-function ElementCell({ el }: { el: Element }) {
+function ElementCell({
+  el,
+  isSelected,
+  onClick,
+}: {
+  el: Element;
+  isSelected: boolean;
+  onClick: () => void;
+}) {
   return (
     <div
+      onClick={onClick}
       style={{
         gridColumn: el.xpos,
         gridRow: getGridRow(el.ypos),
         backgroundColor: categoryColors[el.category],
+        outline: isSelected ? '2px solid white' : 'none',
+        outlineOffset: '-2px',
       }}
       className="
         relative cursor-pointer rounded-sm
@@ -26,23 +37,16 @@ function ElementCell({ el }: { el: Element }) {
         p-[2px] overflow-hidden
       "
     >
-      {/* Atomic number — top left */}
       <span className="self-start text-[9px] font-semibold text-gray-800 leading-none">
         {el.atomicNumber}
       </span>
-
-      {/* Symbol — center, largest text */}
       <span className="text-sm font-bold text-gray-900 leading-none">
         {el.symbol}
       </span>
-
-      {/* Name — small, may truncate on small screens */}
       <span className="text-[7px] text-gray-700 leading-none text-center w-full truncate">
         {el.name}
       </span>
-
-      {/* Atomic mass — bottom */}
-      <span className="text-[6px] text-gray-600 leading-none">
+      <span className="text-[7px] text-gray-600 leading-none">
         {el.atomicMass}
       </span>
     </div>
@@ -50,10 +54,17 @@ function ElementCell({ el }: { el: Element }) {
 }
 
 export default function PeriodicTable() {
+  const [selected, setSelected] = useState<Element | null>(null);
+
+  function handleClick(el: Element) {
+    // clicking the same element again closes the panel
+    setSelected(prev => prev?.atomicNumber === el.atomicNumber ? null : el);
+  }
+
   return (
     <div className="w-full overflow-x-auto pb-6">
 
-      {/* ── Periodic Table Grid ── */}
+      {/* Grid */}
       <div
         style={{
           display: 'grid',
@@ -64,11 +75,16 @@ export default function PeriodicTable() {
         }}
       >
         {elements.map((el) => (
-          <ElementCell key={el.atomicNumber} el={el} />
+          <ElementCell
+            key={el.atomicNumber}
+            el={el}
+            isSelected={selected?.atomicNumber === el.atomicNumber}
+            onClick={() => handleClick(el)}
+          />
         ))}
       </div>
 
-      {/* ── Legend ── */}
+      {/* Legend */}
       <div className="mt-8 flex flex-wrap gap-3 justify-center px-4">
         {(Object.entries(categoryColors) as [ElementCategory, string][]).map(
           ([cat, color]) => (
@@ -85,6 +101,14 @@ export default function PeriodicTable() {
         )}
       </div>
 
+      {/* Detail panel — only renders when an element is selected */}
+      {selected && (
+        <ElementDetailPanel
+          element={selected}
+          onClose={() => setSelected(null)}
+        />
+      )}
+
     </div>
   );
-}//
+}
