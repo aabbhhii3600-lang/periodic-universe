@@ -1,0 +1,164 @@
+// ============================================================
+// PERIODIC UNIVERSE — Extended Element Properties
+// Sources: NIST WebBook, CRC Handbook 97th Ed, IUPAC 2021
+// null = data unknown or not applicable for that element
+// Configs use Unicode superscripts: ⁰¹²³⁴⁵⁶⁷⁸⁹
+// ============================================================
+
+export interface ElementProperties {
+    atomicNumber: number;
+    electronicConfig: string;      // abbreviated noble-gas config
+    electronegativity: number | null; // Pauling scale
+    atomicRadius: number | null;   // empirical radius in pm
+    ionizationEnergy: number | null; // 1st IE in kJ/mol
+    meltingPoint: number | null;   // in Kelvin
+    boilingPoint: number | null;   // in Kelvin
+    density: number | null;        // g/cm³ at STP
+    oxidationStates: number[];     // most common first
+  }
+  
+  // Keyed by atomic number for O(1) lookup
+  export const elementProperties: Record<number, ElementProperties> = {
+  
+    // ── PERIOD 1 ──────────────────────────────────────────────
+    1:  { atomicNumber: 1,   electronicConfig: '1s¹',                       electronegativity: 2.20, atomicRadius: 53,   ionizationEnergy: 1312.0, meltingPoint: 14.01,   boilingPoint: 20.28,   density: 0.00008988, oxidationStates: [1, -1] },
+    2:  { atomicNumber: 2,   electronicConfig: '1s²',                       electronegativity: null, atomicRadius: 31,   ionizationEnergy: 2372.3, meltingPoint: 0.95,    boilingPoint: 4.22,    density: 0.0001785,  oxidationStates: [0] },
+  
+    // ── PERIOD 2 ──────────────────────────────────────────────
+    3:  { atomicNumber: 3,   electronicConfig: '[He] 2s¹',                  electronegativity: 0.98, atomicRadius: 167,  ionizationEnergy: 520.2,  meltingPoint: 453.65,  boilingPoint: 1603,    density: 0.534,      oxidationStates: [1] },
+    4:  { atomicNumber: 4,   electronicConfig: '[He] 2s²',                  electronegativity: 1.57, atomicRadius: 112,  ionizationEnergy: 899.5,  meltingPoint: 1560,    boilingPoint: 2742,    density: 1.85,       oxidationStates: [2] },
+    5:  { atomicNumber: 5,   electronicConfig: '[He] 2s² 2p¹',              electronegativity: 2.04, atomicRadius: 87,   ionizationEnergy: 800.6,  meltingPoint: 2349,    boilingPoint: 4200,    density: 2.34,       oxidationStates: [3] },
+    6:  { atomicNumber: 6,   electronicConfig: '[He] 2s² 2p²',              electronegativity: 2.55, atomicRadius: 67,   ionizationEnergy: 1086.5, meltingPoint: 3823,    boilingPoint: 4098,    density: 2.267,      oxidationStates: [4, 2, -4] },
+    7:  { atomicNumber: 7,   electronicConfig: '[He] 2s² 2p³',              electronegativity: 3.04, atomicRadius: 56,   ionizationEnergy: 1402.3, meltingPoint: 63.15,   boilingPoint: 77.36,   density: 0.001251,   oxidationStates: [-3, 3, 5, 2, 4] },
+    8:  { atomicNumber: 8,   electronicConfig: '[He] 2s² 2p⁴',              electronegativity: 3.44, atomicRadius: 48,   ionizationEnergy: 1313.9, meltingPoint: 54.36,   boilingPoint: 90.20,   density: 0.001429,   oxidationStates: [-2, -1] },
+    9:  { atomicNumber: 9,   electronicConfig: '[He] 2s² 2p⁵',              electronegativity: 3.98, atomicRadius: 42,   ionizationEnergy: 1681.0, meltingPoint: 53.53,   boilingPoint: 85.03,   density: 0.001696,   oxidationStates: [-1] },
+    10: { atomicNumber: 10,  electronicConfig: '[He] 2s² 2p⁶',              electronegativity: null, atomicRadius: 38,   ionizationEnergy: 2080.7, meltingPoint: 24.56,   boilingPoint: 27.07,   density: 0.0009002,  oxidationStates: [0] },
+  
+    // ── PERIOD 3 ──────────────────────────────────────────────
+    11: { atomicNumber: 11,  electronicConfig: '[Ne] 3s¹',                  electronegativity: 0.93, atomicRadius: 190,  ionizationEnergy: 495.8,  meltingPoint: 370.87,  boilingPoint: 1156,    density: 0.971,      oxidationStates: [1] },
+    12: { atomicNumber: 12,  electronicConfig: '[Ne] 3s²',                  electronegativity: 1.31, atomicRadius: 145,  ionizationEnergy: 737.7,  meltingPoint: 923,     boilingPoint: 1363,    density: 1.738,      oxidationStates: [2] },
+    13: { atomicNumber: 13,  electronicConfig: '[Ne] 3s² 3p¹',              electronegativity: 1.61, atomicRadius: 118,  ionizationEnergy: 577.5,  meltingPoint: 933.47,  boilingPoint: 2792,    density: 2.698,      oxidationStates: [3] },
+    14: { atomicNumber: 14,  electronicConfig: '[Ne] 3s² 3p²',              electronegativity: 1.90, atomicRadius: 111,  ionizationEnergy: 786.5,  meltingPoint: 1687,    boilingPoint: 3538,    density: 2.329,      oxidationStates: [4, -4] },
+    15: { atomicNumber: 15,  electronicConfig: '[Ne] 3s² 3p³',              electronegativity: 2.19, atomicRadius: 98,   ionizationEnergy: 1011.8, meltingPoint: 317.3,   boilingPoint: 553.6,   density: 1.823,      oxidationStates: [-3, 3, 5] },
+    16: { atomicNumber: 16,  electronicConfig: '[Ne] 3s² 3p⁴',              electronegativity: 2.58, atomicRadius: 88,   ionizationEnergy: 999.6,  meltingPoint: 388.36,  boilingPoint: 717.87,  density: 2.067,      oxidationStates: [-2, 4, 6, 2] },
+    17: { atomicNumber: 17,  electronicConfig: '[Ne] 3s² 3p⁵',              electronegativity: 3.16, atomicRadius: 79,   ionizationEnergy: 1251.2, meltingPoint: 171.6,   boilingPoint: 239.11,  density: 0.003214,   oxidationStates: [-1, 1, 3, 5, 7] },
+    18: { atomicNumber: 18,  electronicConfig: '[Ne] 3s² 3p⁶',              electronegativity: null, atomicRadius: 71,   ionizationEnergy: 1520.6, meltingPoint: 83.80,   boilingPoint: 87.30,   density: 0.001784,   oxidationStates: [0] },
+  
+    // ── PERIOD 4 ──────────────────────────────────────────────
+    19: { atomicNumber: 19,  electronicConfig: '[Ar] 4s¹',                  electronegativity: 0.82, atomicRadius: 243,  ionizationEnergy: 418.8,  meltingPoint: 336.53,  boilingPoint: 1032,    density: 0.862,      oxidationStates: [1] },
+    20: { atomicNumber: 20,  electronicConfig: '[Ar] 4s²',                  electronegativity: 1.00, atomicRadius: 194,  ionizationEnergy: 589.8,  meltingPoint: 1115,    boilingPoint: 1757,    density: 1.55,       oxidationStates: [2] },
+    21: { atomicNumber: 21,  electronicConfig: '[Ar] 3d¹ 4s²',              electronegativity: 1.36, atomicRadius: 184,  ionizationEnergy: 633.1,  meltingPoint: 1814,    boilingPoint: 3109,    density: 2.989,      oxidationStates: [3] },
+    22: { atomicNumber: 22,  electronicConfig: '[Ar] 3d² 4s²',              electronegativity: 1.54, atomicRadius: 176,  ionizationEnergy: 658.8,  meltingPoint: 1941,    boilingPoint: 3560,    density: 4.507,      oxidationStates: [4, 3, 2] },
+    23: { atomicNumber: 23,  electronicConfig: '[Ar] 3d³ 4s²',              electronegativity: 1.63, atomicRadius: 171,  ionizationEnergy: 650.9,  meltingPoint: 2183,    boilingPoint: 3680,    density: 6.11,       oxidationStates: [5, 4, 3, 2] },
+    24: { atomicNumber: 24,  electronicConfig: '[Ar] 3d⁵ 4s¹',              electronegativity: 1.66, atomicRadius: 166,  ionizationEnergy: 652.9,  meltingPoint: 2180,    boilingPoint: 2944,    density: 7.15,       oxidationStates: [3, 6, 2, 0] },
+    25: { atomicNumber: 25,  electronicConfig: '[Ar] 3d⁵ 4s²',              electronegativity: 1.55, atomicRadius: 161,  ionizationEnergy: 717.3,  meltingPoint: 1519,    boilingPoint: 2334,    density: 7.21,       oxidationStates: [2, 4, 7, 3] },
+    26: { atomicNumber: 26,  electronicConfig: '[Ar] 3d⁶ 4s²',              electronegativity: 1.83, atomicRadius: 156,  ionizationEnergy: 762.5,  meltingPoint: 1811,    boilingPoint: 3134,    density: 7.874,      oxidationStates: [2, 3, 0, 6] },
+    27: { atomicNumber: 27,  electronicConfig: '[Ar] 3d⁷ 4s²',              electronegativity: 1.88, atomicRadius: 152,  ionizationEnergy: 760.4,  meltingPoint: 1768,    boilingPoint: 3200,    density: 8.90,       oxidationStates: [2, 3, 0] },
+    28: { atomicNumber: 28,  electronicConfig: '[Ar] 3d⁸ 4s²',              electronegativity: 1.91, atomicRadius: 149,  ionizationEnergy: 737.1,  meltingPoint: 1728,    boilingPoint: 3186,    density: 8.908,      oxidationStates: [2, 3, 0] },
+    29: { atomicNumber: 29,  electronicConfig: '[Ar] 3d¹⁰ 4s¹',             electronegativity: 1.90, atomicRadius: 145,  ionizationEnergy: 745.5,  meltingPoint: 1357.77, boilingPoint: 2835,    density: 8.960,      oxidationStates: [1, 2] },
+    30: { atomicNumber: 30,  electronicConfig: '[Ar] 3d¹⁰ 4s²',             electronegativity: 1.65, atomicRadius: 142,  ionizationEnergy: 906.4,  meltingPoint: 692.68,  boilingPoint: 1180,    density: 7.134,      oxidationStates: [2] },
+    31: { atomicNumber: 31,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p¹',         electronegativity: 1.81, atomicRadius: 136,  ionizationEnergy: 578.8,  meltingPoint: 302.91,  boilingPoint: 2673,    density: 5.91,       oxidationStates: [3] },
+    32: { atomicNumber: 32,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p²',         electronegativity: 2.01, atomicRadius: 125,  ionizationEnergy: 762.2,  meltingPoint: 1211.4,  boilingPoint: 3106,    density: 5.323,      oxidationStates: [4, 2] },
+    33: { atomicNumber: 33,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p³',         electronegativity: 2.18, atomicRadius: 114,  ionizationEnergy: 947.0,  meltingPoint: 1090,    boilingPoint: 887,     density: 5.727,      oxidationStates: [-3, 3, 5] },
+    34: { atomicNumber: 34,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p⁴',         electronegativity: 2.55, atomicRadius: 103,  ionizationEnergy: 941.0,  meltingPoint: 494,     boilingPoint: 958,     density: 4.81,       oxidationStates: [-2, 4, 6] },
+    35: { atomicNumber: 35,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p⁵',         electronegativity: 2.96, atomicRadius: 94,   ionizationEnergy: 1139.9, meltingPoint: 265.8,   boilingPoint: 332.0,   density: 3.1028,     oxidationStates: [-1, 1, 3, 5, 7] },
+    36: { atomicNumber: 36,  electronicConfig: '[Ar] 3d¹⁰ 4s² 4p⁶',         electronegativity: 3.00, atomicRadius: 88,   ionizationEnergy: 1350.8, meltingPoint: 115.79,  boilingPoint: 119.93,  density: 0.003749,   oxidationStates: [0, 2] },
+  
+    // ── PERIOD 5 ──────────────────────────────────────────────
+    37: { atomicNumber: 37,  electronicConfig: '[Kr] 5s¹',                  electronegativity: 0.82, atomicRadius: 265,  ionizationEnergy: 403.0,  meltingPoint: 312.46,  boilingPoint: 961,     density: 1.532,      oxidationStates: [1] },
+    38: { atomicNumber: 38,  electronicConfig: '[Kr] 5s²',                  electronegativity: 0.95, atomicRadius: 219,  ionizationEnergy: 549.5,  meltingPoint: 1050,    boilingPoint: 1655,    density: 2.64,       oxidationStates: [2] },
+    39: { atomicNumber: 39,  electronicConfig: '[Kr] 4d¹ 5s²',              electronegativity: 1.22, atomicRadius: 212,  ionizationEnergy: 600.0,  meltingPoint: 1799,    boilingPoint: 3609,    density: 4.472,      oxidationStates: [3] },
+    40: { atomicNumber: 40,  electronicConfig: '[Kr] 4d² 5s²',              electronegativity: 1.33, atomicRadius: 206,  ionizationEnergy: 640.1,  meltingPoint: 2128,    boilingPoint: 4682,    density: 6.52,       oxidationStates: [4] },
+    41: { atomicNumber: 41,  electronicConfig: '[Kr] 4d⁴ 5s¹',              electronegativity: 1.60, atomicRadius: 198,  ionizationEnergy: 652.1,  meltingPoint: 2750,    boilingPoint: 5017,    density: 8.57,       oxidationStates: [5, 3, 2] },
+    42: { atomicNumber: 42,  electronicConfig: '[Kr] 4d⁵ 5s¹',              electronegativity: 2.16, atomicRadius: 190,  ionizationEnergy: 684.3,  meltingPoint: 2896,    boilingPoint: 4912,    density: 10.28,      oxidationStates: [6, 4, 2, 3] },
+    43: { atomicNumber: 43,  electronicConfig: '[Kr] 4d⁵ 5s²',              electronegativity: 1.90, atomicRadius: 183,  ionizationEnergy: 702.0,  meltingPoint: 2430,    boilingPoint: 4538,    density: 11.5,       oxidationStates: [7, 4, 2] },
+    44: { atomicNumber: 44,  electronicConfig: '[Kr] 4d⁷ 5s¹',              electronegativity: 2.20, atomicRadius: 178,  ionizationEnergy: 710.2,  meltingPoint: 2607,    boilingPoint: 4423,    density: 12.45,      oxidationStates: [3, 4, 8, 2] },
+    45: { atomicNumber: 45,  electronicConfig: '[Kr] 4d⁸ 5s¹',              electronegativity: 2.28, atomicRadius: 173,  ionizationEnergy: 719.7,  meltingPoint: 2237,    boilingPoint: 3968,    density: 12.41,      oxidationStates: [3, 2, 4] },
+    46: { atomicNumber: 46,  electronicConfig: '[Kr] 4d¹⁰',                  electronegativity: 2.20, atomicRadius: 169,  ionizationEnergy: 804.4,  meltingPoint: 1828.05, boilingPoint: 3236,    density: 12.023,     oxidationStates: [2, 4, 0] },
+    47: { atomicNumber: 47,  electronicConfig: '[Kr] 4d¹⁰ 5s¹',             electronegativity: 1.93, atomicRadius: 165,  ionizationEnergy: 731.0,  meltingPoint: 1234.93, boilingPoint: 2435,    density: 10.49,      oxidationStates: [1] },
+    48: { atomicNumber: 48,  electronicConfig: '[Kr] 4d¹⁰ 5s²',             electronegativity: 1.69, atomicRadius: 161,  ionizationEnergy: 867.8,  meltingPoint: 594.22,  boilingPoint: 1040,    density: 8.65,       oxidationStates: [2] },
+    49: { atomicNumber: 49,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p¹',         electronegativity: 1.78, atomicRadius: 156,  ionizationEnergy: 558.3,  meltingPoint: 429.75,  boilingPoint: 2345,    density: 7.31,       oxidationStates: [3] },
+    50: { atomicNumber: 50,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p²',         electronegativity: 1.96, atomicRadius: 145,  ionizationEnergy: 708.6,  meltingPoint: 505.08,  boilingPoint: 2875,    density: 7.265,      oxidationStates: [4, 2] },
+    51: { atomicNumber: 51,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p³',         electronegativity: 2.05, atomicRadius: 133,  ionizationEnergy: 834.0,  meltingPoint: 903.78,  boilingPoint: 1860,    density: 6.697,      oxidationStates: [-3, 3, 5] },
+    52: { atomicNumber: 52,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p⁴',         electronegativity: 2.10, atomicRadius: 123,  ionizationEnergy: 869.3,  meltingPoint: 722.66,  boilingPoint: 1261,    density: 6.24,       oxidationStates: [-2, 4, 6] },
+    53: { atomicNumber: 53,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p⁵',         electronegativity: 2.66, atomicRadius: 115,  ionizationEnergy: 1008.4, meltingPoint: 386.85,  boilingPoint: 457.4,   density: 4.933,      oxidationStates: [-1, 1, 3, 5, 7] },
+    54: { atomicNumber: 54,  electronicConfig: '[Kr] 4d¹⁰ 5s² 5p⁶',         electronegativity: 2.60, atomicRadius: 108,  ionizationEnergy: 1170.4, meltingPoint: 161.4,   boilingPoint: 165.03,  density: 0.005887,   oxidationStates: [0, 2, 4, 6, 8] },
+  
+    // ── PERIOD 6 ──────────────────────────────────────────────
+    55: { atomicNumber: 55,  electronicConfig: '[Xe] 6s¹',                  electronegativity: 0.79, atomicRadius: 298,  ionizationEnergy: 375.7,  meltingPoint: 301.59,  boilingPoint: 944,     density: 1.873,      oxidationStates: [1] },
+    56: { atomicNumber: 56,  electronicConfig: '[Xe] 6s²',                  electronegativity: 0.89, atomicRadius: 253,  ionizationEnergy: 502.9,  meltingPoint: 1000,    boilingPoint: 2118,    density: 3.51,       oxidationStates: [2] },
+    57: { atomicNumber: 57,  electronicConfig: '[Xe] 5d¹ 6s²',              electronegativity: 1.10, atomicRadius: 250,  ionizationEnergy: 538.1,  meltingPoint: 1193,    boilingPoint: 3737,    density: 6.162,      oxidationStates: [3] },
+    58: { atomicNumber: 58,  electronicConfig: '[Xe] 4f¹ 5d¹ 6s²',          electronegativity: 1.12, atomicRadius: 248,  ionizationEnergy: 534.4,  meltingPoint: 1068,    boilingPoint: 3716,    density: 6.770,      oxidationStates: [3, 4] },
+    59: { atomicNumber: 59,  electronicConfig: '[Xe] 4f³ 6s²',              electronegativity: 1.13, atomicRadius: 247,  ionizationEnergy: 527.0,  meltingPoint: 1208,    boilingPoint: 3793,    density: 6.77,       oxidationStates: [3, 4] },
+    60: { atomicNumber: 60,  electronicConfig: '[Xe] 4f⁴ 6s²',              electronegativity: 1.14, atomicRadius: 206,  ionizationEnergy: 533.1,  meltingPoint: 1297,    boilingPoint: 3347,    density: 7.01,       oxidationStates: [3] },
+    61: { atomicNumber: 61,  electronicConfig: '[Xe] 4f⁵ 6s²',              electronegativity: 1.13, atomicRadius: 205,  ionizationEnergy: 540.0,  meltingPoint: 1315,    boilingPoint: 3273,    density: 7.26,       oxidationStates: [3] },
+    62: { atomicNumber: 62,  electronicConfig: '[Xe] 4f⁶ 6s²',              electronegativity: 1.17, atomicRadius: 238,  ionizationEnergy: 544.5,  meltingPoint: 1345,    boilingPoint: 2067,    density: 7.52,       oxidationStates: [3, 2] },
+    63: { atomicNumber: 63,  electronicConfig: '[Xe] 4f⁷ 6s²',              electronegativity: 1.20, atomicRadius: 231,  ionizationEnergy: 547.1,  meltingPoint: 1099,    boilingPoint: 1802,    density: 5.244,      oxidationStates: [3, 2] },
+    64: { atomicNumber: 64,  electronicConfig: '[Xe] 4f⁷ 5d¹ 6s²',          electronegativity: 1.20, atomicRadius: 233,  ionizationEnergy: 593.4,  meltingPoint: 1585,    boilingPoint: 3546,    density: 7.90,       oxidationStates: [3] },
+    65: { atomicNumber: 65,  electronicConfig: '[Xe] 4f⁹ 6s²',              electronegativity: 1.10, atomicRadius: 225,  ionizationEnergy: 565.8,  meltingPoint: 1629,    boilingPoint: 3503,    density: 8.23,       oxidationStates: [3, 4] },
+    66: { atomicNumber: 66,  electronicConfig: '[Xe] 4f¹⁰ 6s²',             electronegativity: 1.22, atomicRadius: 228,  ionizationEnergy: 573.0,  meltingPoint: 1680,    boilingPoint: 2840,    density: 8.551,      oxidationStates: [3] },
+    67: { atomicNumber: 67,  electronicConfig: '[Xe] 4f¹¹ 6s²',             electronegativity: 1.23, atomicRadius: 226,  ionizationEnergy: 581.0,  meltingPoint: 1734,    boilingPoint: 2993,    density: 8.795,      oxidationStates: [3] },
+    68: { atomicNumber: 68,  electronicConfig: '[Xe] 4f¹² 6s²',             electronegativity: 1.24, atomicRadius: 226,  ionizationEnergy: 589.3,  meltingPoint: 1802,    boilingPoint: 3141,    density: 9.066,      oxidationStates: [3] },
+    69: { atomicNumber: 69,  electronicConfig: '[Xe] 4f¹³ 6s²',             electronegativity: 1.25, atomicRadius: 222,  ionizationEnergy: 596.7,  meltingPoint: 1818,    boilingPoint: 2223,    density: 9.321,      oxidationStates: [3, 2] },
+    70: { atomicNumber: 70,  electronicConfig: '[Xe] 4f¹⁴ 6s²',             electronegativity: 1.10, atomicRadius: 222,  ionizationEnergy: 603.4,  meltingPoint: 1097,    boilingPoint: 1469,    density: 6.965,      oxidationStates: [3, 2] },
+    71: { atomicNumber: 71,  electronicConfig: '[Xe] 4f¹⁴ 5d¹ 6s²',         electronegativity: 1.27, atomicRadius: 217,  ionizationEnergy: 523.5,  meltingPoint: 1925,    boilingPoint: 3675,    density: 9.841,      oxidationStates: [3] },
+    72: { atomicNumber: 72,  electronicConfig: '[Xe] 4f¹⁴ 5d² 6s²',         electronegativity: 1.30, atomicRadius: 208,  ionizationEnergy: 658.5,  meltingPoint: 2506,    boilingPoint: 4876,    density: 13.31,      oxidationStates: [4] },
+    73: { atomicNumber: 73,  electronicConfig: '[Xe] 4f¹⁴ 5d³ 6s²',         electronegativity: 1.50, atomicRadius: 200,  ionizationEnergy: 761.0,  meltingPoint: 3290,    boilingPoint: 5731,    density: 16.69,      oxidationStates: [5, 3] },
+    74: { atomicNumber: 74,  electronicConfig: '[Xe] 4f¹⁴ 5d⁴ 6s²',         electronegativity: 2.36, atomicRadius: 193,  ionizationEnergy: 770.0,  meltingPoint: 3695,    boilingPoint: 5828,    density: 19.25,      oxidationStates: [6, 4, 2] },
+    75: { atomicNumber: 75,  electronicConfig: '[Xe] 4f¹⁴ 5d⁵ 6s²',         electronegativity: 1.90, atomicRadius: 188,  ionizationEnergy: 760.0,  meltingPoint: 3459,    boilingPoint: 5869,    density: 21.02,      oxidationStates: [7, 4, 2, 6] },
+    76: { atomicNumber: 76,  electronicConfig: '[Xe] 4f¹⁴ 5d⁶ 6s²',         electronegativity: 2.20, atomicRadius: 185,  ionizationEnergy: 840.0,  meltingPoint: 3306,    boilingPoint: 5285,    density: 22.59,      oxidationStates: [4, 3, 8, 2] },
+    77: { atomicNumber: 77,  electronicConfig: '[Xe] 4f¹⁴ 5d⁷ 6s²',         electronegativity: 2.20, atomicRadius: 180,  ionizationEnergy: 880.0,  meltingPoint: 2719,    boilingPoint: 4403,    density: 22.56,      oxidationStates: [3, 4, 1] },
+    78: { atomicNumber: 78,  electronicConfig: '[Xe] 4f¹⁴ 5d⁹ 6s¹',         electronegativity: 2.28, atomicRadius: 177,  ionizationEnergy: 870.0,  meltingPoint: 2041.4,  boilingPoint: 4098,    density: 21.45,      oxidationStates: [2, 4, 0] },
+    79: { atomicNumber: 79,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s¹',        electronegativity: 2.54, atomicRadius: 174,  ionizationEnergy: 890.1,  meltingPoint: 1337.33, boilingPoint: 3129,    density: 19.30,      oxidationStates: [3, 1] },
+    80: { atomicNumber: 80,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s²',        electronegativity: 2.00, atomicRadius: 171,  ionizationEnergy: 1007.1, meltingPoint: 234.32,  boilingPoint: 629.88,  density: 13.534,     oxidationStates: [2, 1] },
+    81: { atomicNumber: 81,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p¹',    electronegativity: 1.62, atomicRadius: 156,  ionizationEnergy: 589.4,  meltingPoint: 577,     boilingPoint: 1746,    density: 11.85,      oxidationStates: [1, 3] },
+    82: { atomicNumber: 82,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p²',    electronegativity: 2.33, atomicRadius: 154,  ionizationEnergy: 715.6,  meltingPoint: 600.61,  boilingPoint: 2022,    density: 11.34,      oxidationStates: [2, 4] },
+    83: { atomicNumber: 83,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³',    electronegativity: 2.02, atomicRadius: 143,  ionizationEnergy: 703.0,  meltingPoint: 544.55,  boilingPoint: 1837,    density: 9.78,       oxidationStates: [3, 5] },
+    84: { atomicNumber: 84,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴',    electronegativity: 2.00, atomicRadius: 135,  ionizationEnergy: 812.1,  meltingPoint: 527,     boilingPoint: 1235,    density: 9.196,      oxidationStates: [2, 4, -2] },
+    85: { atomicNumber: 85,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵',    electronegativity: 2.20, atomicRadius: 127,  ionizationEnergy: 890.0,  meltingPoint: 575,     boilingPoint: 610,     density: null,       oxidationStates: [-1, 1, 3, 5] },
+    86: { atomicNumber: 86,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶',    electronegativity: 2.20, atomicRadius: 120,  ionizationEnergy: 1037.0, meltingPoint: 202.0,   boilingPoint: 211.5,   density: 0.00973,    oxidationStates: [0, 2] },
+  
+    // ── PERIOD 7 ──────────────────────────────────────────────
+    87: { atomicNumber: 87,  electronicConfig: '[Rn] 7s¹',                  electronegativity: 0.70, atomicRadius: null, ionizationEnergy: 380.0,  meltingPoint: 300,     boilingPoint: 950,     density: null,       oxidationStates: [1] },
+    88: { atomicNumber: 88,  electronicConfig: '[Rn] 7s²',                  electronegativity: 0.90, atomicRadius: null, ionizationEnergy: 509.3,  meltingPoint: 973,     boilingPoint: 2010,    density: 5.0,        oxidationStates: [2] },
+    89: { atomicNumber: 89,  electronicConfig: '[Rn] 6d¹ 7s²',              electronegativity: 1.10, atomicRadius: null, ionizationEnergy: 499.0,  meltingPoint: 1323,    boilingPoint: 3471,    density: 10.07,      oxidationStates: [3] },
+    90: { atomicNumber: 90,  electronicConfig: '[Rn] 6d² 7s²',              electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 587.0,  meltingPoint: 2115,    boilingPoint: 5061,    density: 11.72,      oxidationStates: [4] },
+    91: { atomicNumber: 91,  electronicConfig: '[Rn] 5f² 6d¹ 7s²',          electronegativity: 1.50, atomicRadius: null, ionizationEnergy: 568.0,  meltingPoint: 1841,    boilingPoint: 4300,    density: 15.37,      oxidationStates: [5, 4] },
+    92: { atomicNumber: 92,  electronicConfig: '[Rn] 5f³ 6d¹ 7s²',          electronegativity: 1.38, atomicRadius: null, ionizationEnergy: 597.6,  meltingPoint: 1405.3,  boilingPoint: 4404,    density: 19.1,       oxidationStates: [6, 4, 3, 5] },
+    93: { atomicNumber: 93,  electronicConfig: '[Rn] 5f⁴ 6d¹ 7s²',          electronegativity: 1.36, atomicRadius: null, ionizationEnergy: 604.5,  meltingPoint: 917,     boilingPoint: 4273,    density: 20.45,      oxidationStates: [5, 4, 6, 3] },
+    94: { atomicNumber: 94,  electronicConfig: '[Rn] 5f⁶ 7s²',              electronegativity: 1.28, atomicRadius: null, ionizationEnergy: 584.7,  meltingPoint: 912.5,   boilingPoint: 3501,    density: 19.816,     oxidationStates: [4, 3, 5, 6] },
+    95: { atomicNumber: 95,  electronicConfig: '[Rn] 5f⁷ 7s²',              electronegativity: 1.13, atomicRadius: null, ionizationEnergy: 578.0,  meltingPoint: 1449,    boilingPoint: 2880,    density: 13.67,      oxidationStates: [3, 4, 5, 6] },
+    96: { atomicNumber: 96,  electronicConfig: '[Rn] 5f⁷ 6d¹ 7s²',          electronegativity: 1.28, atomicRadius: null, ionizationEnergy: 581.0,  meltingPoint: 1613,    boilingPoint: 3383,    density: 13.51,      oxidationStates: [3, 4] },
+    97: { atomicNumber: 97,  electronicConfig: '[Rn] 5f⁹ 7s²',              electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 601.0,  meltingPoint: 1259,    boilingPoint: 2900,    density: 14.79,      oxidationStates: [3, 4] },
+    98: { atomicNumber: 98,  electronicConfig: '[Rn] 5f¹⁰ 7s²',             electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 608.0,  meltingPoint: 1173,    boilingPoint: null,    density: 15.1,       oxidationStates: [3] },
+    99: { atomicNumber: 99,  electronicConfig: '[Rn] 5f¹¹ 7s²',             electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 619.0,  meltingPoint: 1133,    boilingPoint: null,    density: null,       oxidationStates: [3] },
+    100:{ atomicNumber: 100, electronicConfig: '[Rn] 5f¹² 7s²',             electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 627.0,  meltingPoint: 1800,    boilingPoint: null,    density: null,       oxidationStates: [3] },
+    101:{ atomicNumber: 101, electronicConfig: '[Rn] 5f¹³ 7s²',             electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 635.0,  meltingPoint: 1100,    boilingPoint: null,    density: null,       oxidationStates: [3, 2] },
+    102:{ atomicNumber: 102, electronicConfig: '[Rn] 5f¹⁴ 7s²',             electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 642.0,  meltingPoint: 1100,    boilingPoint: null,    density: null,       oxidationStates: [2, 3] },
+    103:{ atomicNumber: 103, electronicConfig: '[Rn] 5f¹⁴ 7s² 7p¹',         electronegativity: 1.30, atomicRadius: null, ionizationEnergy: 479.0,  meltingPoint: 1900,    boilingPoint: null,    density: null,       oxidationStates: [3] },
+    104:{ atomicNumber: 104, electronicConfig: '[Rn] 5f¹⁴ 6d² 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [4] },
+    105:{ atomicNumber: 105, electronicConfig: '[Rn] 5f¹⁴ 6d³ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [5] },
+    106:{ atomicNumber: 106, electronicConfig: '[Rn] 5f¹⁴ 6d⁴ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [6] },
+    107:{ atomicNumber: 107, electronicConfig: '[Rn] 5f¹⁴ 6d⁵ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [7] },
+    108:{ atomicNumber: 108, electronicConfig: '[Rn] 5f¹⁴ 6d⁶ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [8] },
+    109:{ atomicNumber: 109, electronicConfig: '[Rn] 5f¹⁴ 6d⁷ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [3] },
+    110:{ atomicNumber: 110, electronicConfig: '[Rn] 5f¹⁴ 6d⁸ 7s²',         electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [2] },
+    111:{ atomicNumber: 111, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s¹',        electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [1] },
+    112:{ atomicNumber: 112, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s²',        electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [2] },
+    113:{ atomicNumber: 113, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p¹',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [1, 3] },
+    114:{ atomicNumber: 114, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [2] },
+    115:{ atomicNumber: 115, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p³',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [1, 3] },
+    116:{ atomicNumber: 116, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁴',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [2] },
+    117:{ atomicNumber: 117, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁵',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [-1, 1] },
+    118:{ atomicNumber: 118, electronicConfig: '[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶',    electronegativity: null, atomicRadius: null, ionizationEnergy: null,   meltingPoint: null,    boilingPoint: null,    density: null,       oxidationStates: [0] },
+  };
+  
+  // Helper — returns null if no data exists for that atomic number
+  export function getElementProperties(atomicNumber: number): ElementProperties | null {
+    return elementProperties[atomicNumber] ?? null;
+  }
+  
+  // Kelvin to Celsius converter
+  export function kelvinToCelsius(k: number): number {
+    return Math.round((k - 273.15) * 100) / 100;
+  }
