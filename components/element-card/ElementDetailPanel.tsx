@@ -19,7 +19,7 @@ export default function ElementDetailPanel({ element: el, onClose }: Props) {
 
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-60 z-40" onClick={onClose} />
+    <div className="fixed inset-0 z-40" style={{backgroundColor: 'rgba(0,0,0,0.55)'}} onClick={onClose} />
       <div className="fixed top-0 right-0 h-full w-96 bg-gray-950 border-l border-gray-700 z-50 overflow-y-auto shadow-2xl">
 
         {/* Header */}
@@ -59,7 +59,7 @@ export default function ElementDetailPanel({ element: el, onClose }: Props) {
           <Section title="Electronic Configuration">
             {props ? (
               <div className="bg-gray-900 rounded p-3 border border-gray-800">
-                <p className="text-white text-sm font-mono tracking-wide">
+                <p className="text-white text-sm tracking-wide">
                   {props.electronicConfig}
                 </p>
               </div>

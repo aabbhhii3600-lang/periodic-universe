@@ -53,12 +53,17 @@ function ElementCell({
   );
 }
 
-export default function PeriodicTable() {
+interface PeriodicTableProps {
+  onElementSelect?: (atomicNumber: number | null) => void;
+}
+
+export default function PeriodicTable({ onElementSelect }: PeriodicTableProps) {
   const [selected, setSelected] = useState<Element | null>(null);
 
   function handleClick(el: Element) {
-    // clicking the same element again closes the panel
-    setSelected(prev => prev?.atomicNumber === el.atomicNumber ? null : el);
+    const next = selected?.atomicNumber === el.atomicNumber ? null : el;
+    setSelected(next);
+    onElementSelect?.(next?.atomicNumber ?? null);
   }
 
   return (
