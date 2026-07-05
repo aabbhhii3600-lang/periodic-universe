@@ -19,7 +19,7 @@ export default function ElementDetailPanel({ element: el, onClose }: Props) {
 
   return (
     <>
-    <div className="fixed inset-0 z-40" style={{backgroundColor: 'rgba(0,0,0,0.55)'}} onClick={onClose} />
+    <div className="fixed inset-0 z-40" style={{backgroundColor: 'rgba(0,0,0,0.3)'}} onClick={onClose} />
       <div className="fixed top-0 right-0 h-full w-96 bg-gray-950 border-l border-gray-700 z-50 overflow-y-auto shadow-2xl">
 
         {/* Header */}
