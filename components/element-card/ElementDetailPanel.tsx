@@ -38,10 +38,11 @@ export default function ElementDetailPanel({ element: el, onClose }: Props) {
             )}
             <Link
             href={`/element/${nameToSlug(el.name)}`}
-         className="mt-3 inline-block bg-black bg-opacity-25 hover:bg-opacity-40 text-gray-900 text-xs px-3 py-1 rounded-full transition-all"
->    View Full Page →
+         className="mt-3 inline-flex items-center gap-1 bg-white bg-opacity-30 hover:bg-opacity-70 text-white font-bold text-xs px-4 py-1.5 rounded-full border border-gray-900 border-opacity-30 transition-all"
+        >
+    View Full Page →
         </Link>
-          </div>
+  </div>
         </div>
 
         <div className="p-5 space-y-4">
