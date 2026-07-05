@@ -29,13 +29,7 @@ function ElementCell({
         outline: isSelected ? '2px solid white' : 'none',
         outlineOffset: '-2px',
       }}
-      className="
-        relative cursor-pointer rounded-sm
-        border border-black border-opacity-20
-        hover:scale-110 hover:z-10 transition-transform duration-150
-        flex flex-col items-center justify-between
-        p-[2px] overflow-hidden
-      "
+      className="relative cursor-pointer rounded-sm border border-black border-opacity-20 hover:scale-110 hover:z-10 transition-transform duration-150 flex flex-col items-center justify-between p-[2px] overflow-hidden group"
     >
       <span className="self-start text-[9px] font-semibold text-gray-800 leading-none">
         {el.atomicNumber}
@@ -49,6 +43,11 @@ function ElementCell({
       <span className="text-[7px] text-gray-600 leading-none">
         {el.atomicMass}
       </span>
+      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-150">
+        <span className="text-white text-[8px] font-bold bg-black bg-opacity-50 px-1 rounded">
+          VIEW
+        </span>
+      </div>
     </div>
   );
 }
@@ -68,8 +67,6 @@ export default function PeriodicTable({ onElementSelect }: PeriodicTableProps) {
 
   return (
     <div className="w-full overflow-x-auto pb-6">
-
-      {/* Grid */}
       <div
         style={{
           display: 'grid',
@@ -89,7 +86,6 @@ export default function PeriodicTable({ onElementSelect }: PeriodicTableProps) {
         ))}
       </div>
 
-      {/* Legend */}
       <div className="mt-8 flex flex-wrap gap-3 justify-center px-4">
         {(Object.entries(categoryColors) as [ElementCategory, string][]).map(
           ([cat, color]) => (
@@ -106,14 +102,15 @@ export default function PeriodicTable({ onElementSelect }: PeriodicTableProps) {
         )}
       </div>
 
-      {/* Detail panel — only renders when an element is selected */}
       {selected && (
         <ElementDetailPanel
           element={selected}
-          onClose={() => setSelected(null)}
+          onClose={() => {
+            setSelected(null);
+            onElementSelect?.(null);
+          }}
         />
       )}
-
     </div>
   );
 }

@@ -2,6 +2,8 @@
 
 import { Element, categoryColors, categoryLabels, isRadioactive } from '../../data/elements';
 import { getElementProperties, kelvinToCelsius } from '../../data/elementProperties';
+import Link from 'next/link';
+import { nameToSlug } from '../../lib/getElement';
 
 interface Props {
   element: Element;
@@ -34,6 +36,11 @@ export default function ElementDetailPanel({ element: el, onClose }: Props) {
                 ☢ Radioactive
               </span>
             )}
+            <Link
+            href={`/element/${nameToSlug(el.name)}`}
+         className="mt-3 inline-block bg-black bg-opacity-25 hover:bg-opacity-40 text-gray-900 text-xs px-3 py-1 rounded-full transition-all"
+>    View Full Page →
+        </Link>
           </div>
         </div>
 
