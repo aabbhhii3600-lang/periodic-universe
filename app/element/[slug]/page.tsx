@@ -4,6 +4,7 @@ import { categoryColors, categoryLabels } from '../../../data/elements';
 import { kelvinToCelsius } from '../../../data/elementProperties';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import BohrModel from '../../../components/element-page/BohrModel';
 
 // Tell Next.js all valid slugs at build time
 export function generateStaticParams() {
@@ -80,17 +81,24 @@ export default async function ElementPage({
       {/* ── Content grid ── */}
       <div className="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        {/* Electronic Configuration */}
-        <Card title="Electronic Configuration">
-          {props ? (
-            <div className="bg-gray-800 rounded p-4 border border-gray-700">
-              <p className="text-white text-lg tracking-wide">
-                {props.electronicConfig}
-              </p>
-            </div>
-          ) : <NoData />}
-        </Card>
-
+      {/* Electronic Configuration + Bohr Model */}
+<Card title="Electronic Configuration">
+  {props ? (
+    <div className="space-y-4">
+      <div className="bg-gray-800 rounded p-4 border border-gray-700">
+        <p className="text-white text-lg tracking-wide">
+          {props.electronicConfig}
+        </p>
+      </div>
+      <BohrModel
+        shells={el.bohrShells}
+        elementSymbol={el.symbol}
+        elementColor={color}
+      />
+    </div>
+  ) : <NoData />}
+</Card>
+        
         {/* Identity */}
         <Card title="Identity">
           <Row label="Category">{categoryLabels[el.category]}</Row>
@@ -175,7 +183,6 @@ export default async function ElementPage({
         <Card title="Coming Soon">
           <div className="space-y-2">
             {[
-              'Bohr Model Diagram',
               'All Ionization Enthalpies',
               'Compounds & Stability',
               'Line Spectra',
