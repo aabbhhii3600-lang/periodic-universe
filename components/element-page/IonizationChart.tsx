@@ -59,6 +59,8 @@ export default function IonizationChart({ energies, elementColor, elementSymbol 
           <YAxis
             stroke="#6b7280"
             tick={{ fill: '#9ca3af', fontSize: 10 }}
+            scale="log"
+            domain={['auto','auto']}
             tickFormatter={(v) => v >= 1000 ? `${(v/1000).toFixed(0)}k` : v}
             label={{
               value: 'kJ/mol',
