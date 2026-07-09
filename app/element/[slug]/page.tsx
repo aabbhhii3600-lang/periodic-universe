@@ -5,6 +5,7 @@ import { kelvinToCelsius } from '../../../data/elementProperties';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import BohrModel from '../../../components/element-page/BohrModel';
+import IonizationChart from '../../../components/element-page/IonizationChart';
 
 // Tell Next.js all valid slugs at build time
 export function generateStaticParams() {
@@ -178,6 +179,17 @@ export default async function ElementPage({
               : ''}
           </p>
         </Card>
+
+        {/* Ionization Energies */}
+<Card title="Ionization Energies">
+  {props ? (
+    <IonizationChart
+      energies={props.allIonizationEnergies}
+      elementColor={color}
+      elementSymbol={el.symbol}
+    />
+  ) : <NoData />}
+</Card>
 
         {/* Coming Soon */}
         <Card title="Coming Soon">
