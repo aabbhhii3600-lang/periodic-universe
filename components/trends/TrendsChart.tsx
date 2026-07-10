@@ -94,7 +94,7 @@ export default function TrendsChart({ highlightZ }: Props) {
       {/* Chart */}
       <div className="bg-gray-900 border border-gray-800 rounded-xl p-4" style={{ minWidth: 320 }}>
         <ResponsiveContainer width="100%" height={320}>
-          <LineChart data={data} margin={{ top: 10, right: 20, left: 10, bottom: 10 }}>
+          <LineChart data={data} margin={{ top: 12, right: 18, left: 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
 
             <XAxis

@@ -114,3 +114,4 @@ export default function PeriodicTable({ onElementSelect }: PeriodicTableProps) {
     </div>
   );
 }
+  

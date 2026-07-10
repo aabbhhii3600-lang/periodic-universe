@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import PeriodicTable from '../components/periodic-table/PeriodicTable';
 import TrendsChart from '../components/trends/TrendsChart';
+import ElementSearch from '../components/search/ElementSearch';
 
 export default function Home() {
   const [selectedZ, setSelectedZ] = useState<number | null>(null);
@@ -16,6 +17,7 @@ export default function Home() {
         Interactive Chemistry Reference · Class 11 to MSc
       </p>
 
+    <ElementSearch />
       <PeriodicTable onElementSelect={(z) => setSelectedZ(z)} />
 
       <TrendsChart highlightZ={selectedZ} />
