@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import BohrModel from '../../../components/element-page/BohrModel';
 import IonizationChart from '../../../components/element-page/IonizationChart';
-import ElementSearch from '../components/search/ElementSearch';
 import PeriodicTable from '../components/periodic-table/PeriodicTable';
+import TrendsChart from '../components/trends/TrendsChart';
+
 
 // Tell Next.js all valid slugs at build time
 export function generateStaticParams() {
