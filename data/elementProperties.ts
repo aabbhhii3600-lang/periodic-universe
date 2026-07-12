@@ -117,7 +117,7 @@ export interface ElementProperties {
     83: { atomicNumber: 83,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³',    electronegativity: 2.02, atomicRadius: 143,  ionizationEnergy: 703.0,  meltingPoint: 544.55,  boilingPoint: 1837,    density: 9.78,       oxidationStates: [3, 5], allIonizationEnergies: [] },
     84: { atomicNumber: 84,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴',    electronegativity: 2.00, atomicRadius: 135,  ionizationEnergy: 812.1,  meltingPoint: 527,     boilingPoint: 1235,    density: 9.196,      oxidationStates: [2, 4, -2], allIonizationEnergies: [] },
     85: { atomicNumber: 85,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵',    electronegativity: 2.20, atomicRadius: 127,  ionizationEnergy: 890.0,  meltingPoint: 575,     boilingPoint: 610,     density: null,       oxidationStates: [-1, 1, 3, 5], allIonizationEnergies: [] },
-    86: { atomicNumber: 86,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶',    electronegativity: 2.20, atomicRadius: 120,  ionizationEnergy: 1037.0, meltingPoint: 202.0,   boilingPoint: 211.5,   density: 0.00973,    oxidationStates: [0, 2], allIonizationEnergies: [], allIonizationEnergies: [] },
+    86: { atomicNumber: 86,  electronicConfig: '[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶',    electronegativity: 2.20, atomicRadius: 120,  ionizationEnergy: 1037.0, meltingPoint: 202.0,   boilingPoint: 211.5,   density: 0.00973,    oxidationStates: [0, 2], allIonizationEnergies: [] },
   
     // ── PERIOD 7 ──────────────────────────────────────────────
     87: { atomicNumber: 87,  electronicConfig: '[Rn] 7s¹',                  electronegativity: 0.70, atomicRadius: null, ionizationEnergy: 380.0,  meltingPoint: 300,     boilingPoint: 950,     density: null,       oxidationStates: [1], allIonizationEnergies: [] },
