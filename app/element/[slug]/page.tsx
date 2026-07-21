@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import BohrModel from '../../../components/element-page/BohrModel';
 import IonizationChart from '../../../components/element-page/IonizationChart';
 import CompoundsSection from '../../../components/element-page/CompoundsSection';
+import SpectraViewer from '../../../components/element-page/SpectraViewer';
 
 // Tell Next.js all valid slugs at build time
 export function generateStaticParams() {
@@ -201,12 +202,20 @@ export default async function ElementPage({
   />
 </Card>
 
+{/* Spectra */}
+<Card title={`Emission Spectrum — ${el.name}`}>
+  <SpectraViewer
+    atomicNumber={el.atomicNumber}
+    elementColor={color}
+    elementName={el.name}
+  />
+</Card>
+
         {/* Coming Soon */}
         <Card title="Coming Soon">
           <div className="space-y-2">
             {[
               'All Ionization Enthalpies',
-              'Line Spectra',
               'Nuclear & Isotopes',
               'Periodic Trends Position',
             ].map(item => (
